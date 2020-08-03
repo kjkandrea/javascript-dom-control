@@ -1,7 +1,13 @@
+import { emit, on } from './Utils.js'
+
 const MenuView = {}
 
 MenuView.setup = function (el) {
   this.el = el
+  this.emit = emit
+  this.on = on
+  this.bindEvents()
+  return this
 }
 
 MenuView.render = function (data) {
@@ -18,6 +24,17 @@ MenuView.generateHtml = function (menus) {
   html += '</ul>'
 
   return html
+}
+
+MenuView.bindEvents = function () {
+  this.el.addEventListener('click', e =>{
+    e.preventDefault()
+    const target = e.target
+
+    if(target.tagName === 'A') {
+      this.emit('@click', { href : target.dataset.href })
+    }
+  })
 }
 
 export default MenuView
