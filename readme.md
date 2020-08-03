@@ -4,5 +4,6 @@
 
 ## 내일 할 것
 
+* page not found 처리
 * loading 처리
 * form validation 및 폼 제출 작업 (가상)
