@@ -1,5 +1,5 @@
 function emit(event, data) {
-  var evt = new CustomEvent(event, { data })
+  var evt = new CustomEvent(event, { detail: data })
   this.el.dispatchEvent(evt)
 }
 

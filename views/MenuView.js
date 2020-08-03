@@ -19,7 +19,7 @@ MenuView.generateHtml = function (menus) {
 
   html += '<ul>'
   menus.forEach(menu => {
-    html += `<li><a href="" data-href="${menu.href}">${menu.name}</a></li>`
+    html += `<li><a href="/${menu.hash}" data-hash="${menu.hash}">${menu.name}</a></li>`
   })
   html += '</ul>'
 
@@ -32,7 +32,7 @@ MenuView.bindEvents = function () {
     const target = e.target
 
     if(target.tagName === 'A') {
-      this.emit('@click', { href : target.dataset.href })
+      this.emit('@click', { hash : target.dataset.hash })
     }
   })
 }

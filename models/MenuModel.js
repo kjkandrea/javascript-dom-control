@@ -1,7 +1,7 @@
 export default {
   data : [
-    {id: 1, name: 'menu 1', href: 'menu-1'},
-    {id: 2, name: 'menu 2', href: 'menu-2'}
+    {id: 1, name: 'home', hash: 'home'},
+    {id: 2, name: 'contact', hash: 'contact'}
   ],
 
   list () {
