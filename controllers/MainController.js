@@ -7,14 +7,14 @@ import PageModel from '../models/PageModel.js'
 export default {
   init() {
     MenuView.setup(document.querySelector('#navbar'))
-      .on('@click', e => this.fetchPage(e.detail.hash))
+      .on('@click', e => PageView.locationSetup(e.detail.hash))
 
     PageView.setup(document.querySelector('#main'))
-      .on('@fetch', e => this.fetchPage(e.detail.hash))
+      .on('@mounted', e => this.bindEvents(e.detail.type))
 
     this.fetchMenus()
     this.fetchPage(window.location.hash.substring(1))
-    window.addEventListener("hashchange", () => this.fetchPage(window.location.hash.substring(1)))
+    this.watchHash()
   },
 
   fetchMenus() {
@@ -29,5 +29,20 @@ export default {
         PageView.render(data, hash)
       })
       .catch(e => console.log(e))
+  },
+
+  watchHash() {
+    window.addEventListener("hashchange", () => this.fetchPage(window.location.hash.substring(1)))
+  },
+
+  bindEvents(type){
+    console.log(type)
+    if(type === 'default') {
+      
+    }
+
+    if(type === 'form') {
+
+    }
   }
 }
