@@ -1,7 +1,8 @@
 export default {
   data : [
     {id: 1, name: 'home', hash: 'home'},
-    {id: 2, name: 'contact', hash: 'contact'}
+    {id: 2, name: 'products', hash: 'products'},
+    {id: 3, name: 'contact', hash: 'contact'}
   ],
 
   list () {

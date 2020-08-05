@@ -51,7 +51,6 @@ FormView.formValidate = function(e){
       this.el.style.display = "none"
       this.el.insertAdjacentHTML('afterend', '<h2>your message is submit. thank you.</h2>')
     }, 1500)
-    console.log(formValue)
   }
 }
 

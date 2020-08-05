@@ -1,9 +1,11 @@
 import MenuView from '../views/MenuView.js'
 import PageView from '../views/PageView.js'
+import ProductsView from '../views/ProductsView.js'
 import FormView from '../views/FormView.js'
 
 import MenuModel from '../models/MenuModel.js'
 import PageModel from '../models/PageModel.js'
+import ProductsModel from '../models/ProductsModel.js'
 
 export default {
   init() {
@@ -16,6 +18,10 @@ export default {
     this.fetchMenus()
     this.fetchPage(window.location.hash.substring(1))
     this.watchHash()
+  },
+
+  initProducts() {
+    this.fetchProducts()
   },
 
   initForm() {
@@ -37,18 +43,24 @@ export default {
       .catch(e => console.log(e))
   },
 
+  fetchProducts(perpage) {
+    ProductsModel.list(perpage ? perpage : {perpage: 1})
+      .then(data => {
+        ProductsView.render(data)
+      })
+  },
+
   watchHash() {
     window.addEventListener("hashchange", () => this.fetchPage(window.location.hash.substring(1)))
   },
 
   bindEvents(type){
-    console.log(type)
-    if(type === 'default') {
-      
-    }
-
     if(type === 'form') {
       this.initForm()
+    }
+
+    if(type === 'products') {
+      this.initProducts()
     }
   }
 }

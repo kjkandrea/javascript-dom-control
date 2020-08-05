@@ -1,7 +1,7 @@
 import { emit, on } from './Utils.js'
 
 const PageView = {}
-PageView.isForm = false
+PageView.pageType = ""
 
 PageView.setup = function (el) {
   this.el = el
@@ -11,14 +11,14 @@ PageView.setup = function (el) {
 },
 
 PageView.initState = function () {
-  this.isForm = false
+  this.pageType = ""
 }
 
 PageView.render = function (data, hash) {
   this.initState()
   this.locationSetup(hash)
   this.el.innerHTML = this.generateHtml(data)
-  this.isForm ? this.emit('@mounted', {type: 'form'}) : this.emit('@mounted', {type: 'default'})
+  this.pageType === "form" ? this.emit('@mounted', {type: 'form'}) : this.emit('@mounted', {type: 'default'})
 },
 
 PageView.locationSetup = function (hash) {
@@ -32,13 +32,15 @@ PageView.generateHtml = function (data) {
   if (data.pageContent) {
     const content = data.pageContent
     if (content.form) html += this.generateForm(content.form)
+    if (content.products) this.emit('@mounted', {type: 'products'})
+
   }
 
   return html
 }
 
 PageView.generateForm = function (data) {
-  this.isForm = true
+  this.pageType = "form"
   let html = '';
 
   html += '<form id="form">'

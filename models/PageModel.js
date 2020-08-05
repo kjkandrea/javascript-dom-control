@@ -3,6 +3,12 @@ export default {
     home : {
       pageTitle: 'Root Page'
     },
+    products: {
+      pageTitle: 'Products',
+      pageContent: {
+        products: "products"
+      }
+    },
     contact: {
       pageTitle: 'Contact Page',
       pageContent: {
