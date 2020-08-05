@@ -4,6 +4,6 @@
 
 ## 내일 할 것
 
-* page not found 처리
-* loading 처리
-* form validation 및 폼 제출 작업 (가상)
+* add to cart 기능 (스토리지에 저장할까?)
+* product single 
+* 주문하기 어떻게 처리할지 고민
