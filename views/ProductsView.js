@@ -7,7 +7,7 @@ ProductsView.setup = function(el) {
 }
 
 ProductsView.render = function(data) {
-  this.el.innerHTML = this.generateHtml(data)
+  this.el.insertAdjacentHTML('beforeend', this.generateHtml(data))
 }
 
 ProductsView.generateHtml = function(data) {
