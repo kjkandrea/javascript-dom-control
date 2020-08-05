@@ -7,8 +7,8 @@ export default {
       pageTitle: 'Contact Page',
       pageContent: {
         form : [
-          { title: 'your name', element: 'input', type: 'text' },
-          { title: 'E-mail', element: 'input', type: 'email' },
+          { title: 'your name', element: 'input', type: 'text', rule: 'require' },
+          { title: 'E-mail', element: 'input', type: 'email', rule: 'require' },
           { title: 'comment', element: 'textarea', type: 'textarea' }
         ]
       }

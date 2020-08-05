@@ -1,5 +1,6 @@
 import MenuView from '../views/MenuView.js'
 import PageView from '../views/PageView.js'
+import FormView from '../views/FormView.js'
 
 import MenuModel from '../models/MenuModel.js'
 import PageModel from '../models/PageModel.js'
@@ -15,6 +16,11 @@ export default {
     this.fetchMenus()
     this.fetchPage(window.location.hash.substring(1))
     this.watchHash()
+  },
+
+  initForm() {
+    FormView.setup(document.querySelector('#main #form'))
+      .on('@submit', e => FormView.formValidate(e))
   },
 
   fetchMenus() {
@@ -42,7 +48,7 @@ export default {
     }
 
     if(type === 'form') {
-
+      this.initForm()
     }
   }
 }

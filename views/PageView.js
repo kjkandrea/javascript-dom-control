@@ -41,20 +41,25 @@ PageView.generateForm = function (data) {
   this.isForm = true
   let html = '';
 
-  html += '<form>'
+  html += '<form id="form">'
   data.forEach((el, idx) => {
+    html += `<div class="form-control">`
     html += `<label for="${el.element}-${idx}">${el.title}</label>`
     if (el.element === 'input') html += `
       <input 
         type="${el.type}"
         id="${el.element}-${idx}"
+        data-rule="${el.rule}"
       />
     `
 
     if (el.element === 'textarea') html += `
-      <textarea id="${el.element}-${idx}"></textarea>
+      <textarea id="${el.element}-${idx}" data-rule="${el.rule}"></textarea>
     `
+    html += `</div>`
   });
+
+  html += '<input type="submit" />'
   html += '</form>'
 
   return html
