@@ -49,12 +49,18 @@ PageView.generateForm = function (data) {
       <input 
         type="${el.type}"
         id="${el.element}-${idx}"
+        name="${el.name}"
         data-rule="${el.rule}"
       />
     `
 
     if (el.element === 'textarea') html += `
-      <textarea id="${el.element}-${idx}" data-rule="${el.rule}"></textarea>
+      <textarea 
+        type="${el.type}"
+        id="${el.element}-${idx}"
+        name="${el.name}"
+        data-rule="${el.rule}"
+      ></textarea>
     `
     html += `</div>`
   });

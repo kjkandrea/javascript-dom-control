@@ -19,18 +19,35 @@ FormView.bindEvents = function(){
 
 FormView.formValidate = function(e){
   const target = e.target.querySelectorAll("[data-rule=require]")
+  let formValue = {}
+  let valid = true;
 
   target.forEach((el) => {
-    if(el.type === 'text') {
-      !!el.value.trim() ? 
-      this.displayInputStatus(true, el) : this.displayInputStatus(false, el, "this field is required")
+    if(el.type === 'text' || el.type === 'textarea') {
+      if (!!el.value.trim()) {
+        this.displayInputStatus(true, el)
+      } else {
+        this.displayInputStatus(false, el, "this field is required")
+        valid = false
+      }
     }
 
     if(el.type === 'email') {
-      !!/.+@.+/.test(el.value.trim()) ?
-      this.displayInputStatus(true, el) : this.displayInputStatus(false, el, "email is required")
+      if (!!/.+@.+/.test(el.value.trim())) {
+        this.displayInputStatus(true, el)
+      } else {
+        this.displayInputStatus(false, el, "email is required")
+        valid = false
+      }
     }
+
+    formValue[el.name] = el.value
   })
+
+  if (valid) {
+    alert('contact is submit. thank you')
+    console.log(formValue)
+  }
 }
 
 FormView.displayInputStatus = function(valid, el, message) {
