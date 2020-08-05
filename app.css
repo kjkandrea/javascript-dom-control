@@ -76,7 +76,18 @@ body {
 }
 
 #form {
+  position: relative;
   margin: 20px 0;
+}
+
+#form.dim:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, .5)
 }
 
 #form label, #form input {

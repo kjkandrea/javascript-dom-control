@@ -45,7 +45,12 @@ FormView.formValidate = function(e){
   })
 
   if (valid) {
-    alert('contact is submit. thank you')
+    this.el.classList.add("dim")
+
+    setTimeout(() => {
+      this.el.style.display = "none"
+      this.el.insertAdjacentHTML('afterend', '<h2>your message is submit. thank you.</h2>')
+    }, 1500)
     console.log(formValue)
   }
 }
