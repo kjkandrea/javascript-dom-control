@@ -22,13 +22,34 @@ FormView.formValidate = function(e){
 
   target.forEach((el) => {
     if(el.type === 'text') {
-      !!el.value.trim() ? true : console.log(el, 'false')
+      !!el.value.trim() ? 
+      this.displayInputStatus(true, el) : this.displayInputStatus(false, el, "this field is required")
     }
 
     if(el.type === 'email') {
-      !!el.value.trim() ? true : console.log(el, 'false')
+      !!/.+@.+/.test(el.value.trim()) ?
+      this.displayInputStatus(true, el) : this.displayInputStatus(false, el, "email is required")
     }
   })
+}
+
+FormView.displayInputStatus = function(valid, el, message) {
+  let control = el.closest(".form-control")
+  let errorHTML = `<p class="error-message">${message}</p>`
+
+  if (valid) {
+    el.classList.remove("error")
+    if(control.querySelector('.error-message')) {
+      control.querySelector('.error-message').remove()
+    }
+  }
+
+  else {
+    el.classList.add("error")
+    if (!control.querySelector('.error-message')) {
+      control.insertAdjacentHTML('beforeend', errorHTML)
+    }
+  }
 }
 
 
