@@ -21,6 +21,7 @@ export default {
   },
 
   initProducts() {
+    ProductsView.setup(document.querySelector('#main'))
     this.fetchProducts()
   },
 
