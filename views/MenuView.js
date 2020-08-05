@@ -19,7 +19,7 @@ MenuView.generateHtml = function (menus) {
 
   html += '<ul>'
   menus.forEach(menu => {
-    html += `<li><a href="/${menu.hash}" data-hash="${menu.hash}">${menu.name}</a></li>`
+    html += `<li><a href="" data-hash="${menu.hash}">${menu.name}</a></li>`
   })
   html += '</ul>'
 
